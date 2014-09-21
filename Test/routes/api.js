@@ -2,6 +2,7 @@ var express = require('express');
 var api = express.Router();
 var rest = require('restler');
 var qs = require('querystring');
+var Uber = require('uber-api')(process.env.UBER_TOKEN,'v1');
 
 api.all('*', function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
@@ -26,6 +27,8 @@ var DoctorDetails = function(elem) {
     this.phone = elem.practices[0].phones[0].number;
     this.practiceName = elem.practices[0].name;
     this.practiceURL = elem.practices[0].website;
+    this.lat = elem.practices[0].lat ;
+    this.lon = elem.practices[0].lon ; 
     this.languages = elem.practices[0].languages;
     this.bio = elem.bio;
     this.profileURL = elem.attribution_url;
@@ -74,6 +77,32 @@ api.get('/doctors/:suid/similar', function(req, response) {
     });
 });
 
+api.post('/estimate', function(req, res){
+    var q = {} ;
+    q.start_latitude = parseFloat(req.body.start_latitude);
+    q.start_longitude =parseFloat(req.body.start_longitude);
+    
+    q.end_latitude = parseFloat(req.body.end_latitude);
+    q.end_longitude =parseFloat(req.body.end_longitude);
+    q.server_token = process.env.UBER_TOKEN;
+    console.log(q);
+    console.log(req.body);
+    rest.get('https://api.uber.com/v1/estimates/price?'+qs.stringify(q)).on('complete', function(data) {
+            res.json(data);
+        });
+});
+
+api.post('/time', function(req, res){
+    var q = {} ;
+    q.start_latitude = parseFloat(req.body.start_latitude);
+    q.start_longitude = parseFloat(req.body.start_longitude);
+    q.server_token = process.env.UBER_TOKEN;
+    console.log(q);
+    console.log(req.body);
+    rest.get('https://api.uber.com/v1/estimates/time?'+qs.stringify(q)).on('complete', function(data) {
+            res.json(data);
+        });
+});
 
 
 module.exports = api;
