@@ -1,4 +1,10 @@
-.head{
-    /*position: relative;*/
-    /*left: 419px;*/
+a .head{
+    -webkit-tap-highlight-color: #ccc;
+}
+
+img {
+    -webkit-tap-highlight-color: #ccc;
+}
+a:hover{
+    -webkit-tap-highlight-color: #ccc;
 }
