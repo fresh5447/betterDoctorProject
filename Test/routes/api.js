@@ -27,6 +27,8 @@ var DoctorDetails = function(elem) {
     this.phone = elem.practices[0].phones[0].number;
     this.practiceName = elem.practices[0].name;
     this.practiceURL = elem.practices[0].website;
+    this.lat = elem.practices[0].lat ;
+    this.lon = elem.practices[0].lon ; 
     this.languages = elem.practices[0].languages;
     this.bio = elem.bio;
     this.profileURL = elem.attribution_url;
@@ -77,11 +79,11 @@ api.get('/doctors/:suid/similar', function(req, response) {
 
 api.post('/estimate', function(req, res){
     var q = {} ;
-    q.start_latitude = Number.parseFloat(req.body.start_latitude);
-    q.start_longitude = Number.parseFloat(req.body.start_longitude);
+    q.start_latitude = parseFloat(req.body.start_latitude);
+    q.start_longitude =parseFloat(req.body.start_longitude);
     
-    q.end_latitude = Number.parseFloat(req.body.end_latitude);
-    q.end_longitude = Number.parseFloat(req.body.end_longitude);
+    q.end_latitude = parseFloat(req.body.end_latitude);
+    q.end_longitude =parseFloat(req.body.end_longitude);
     q.server_token = process.env.UBER_TOKEN;
     console.log(q);
     console.log(req.body);
@@ -92,8 +94,8 @@ api.post('/estimate', function(req, res){
 
 api.post('/time', function(req, res){
     var q = {} ;
-    q.start_latitude = Number.parseFloat(req.body.start_latitude);
-    q.start_longitude = Number.parseFloat(req.body.start_longitude);
+    q.start_latitude = parseFloat(req.body.start_latitude);
+    q.start_longitude = parseFloat(req.body.start_longitude);
     q.server_token = process.env.UBER_TOKEN;
     console.log(q);
     console.log(req.body);
