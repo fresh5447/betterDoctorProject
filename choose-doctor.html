@@ -5,20 +5,34 @@
     <meta charset="UTF-8">
     <meta name="description" content="Same As Header Title">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/bootstrap.css"/>
+    <!-- <link rel="stylesheet" href="css/bootstrap.css"/> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyDHJZHzZ-WN7T7nQ3Sx9Lxwtpqe54OdkC0">
+</script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script src="http://builds.handlebarsjs.com.s3.amazonaws.com/handlebars-v2.0.0.js"></script>
-    <script src="untitled.js"></script>
-
+    <script src="js/choose-google-maps.js"></script>
+<style>
+.map-container {
+    position: relative;
+    padding-bottom: 26.25%;
+    padding-top: 30px;
+    /*height: 0;*/
+    overflow: hidden;
+}
+</style>
 </head>
+
+<body class="container">
 <div class="container">
 <header>
     <div><h2>Choose Your Doctor</h2></div>
 </header><br><br><br>
 
 
-    <div class="big-pic"><img src="images/googlemaps.jpg"></div>
+    <div class="map-container">
+        <div id="googleMap" style="width:500px;height:380px;"></div>
+    <div>
     <br>
     <hr>
     <br>
