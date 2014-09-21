@@ -117,6 +117,7 @@ textarea {
   margin: 0;
   font: inherit;
   color: inherit;
+  font-size: 16px;
 }
 button {
   overflow: visible;
@@ -2816,6 +2817,9 @@ fieldset[disabled] .btn-default.active {
   color: #fff;
   background-color: #428bca;
   border-color: #357ebd;
+    font-size: 42px;
+    position: relative;
+    bottom: 632px;
 }
 .btn-primary:hover,
 .btn-primary:focus,
