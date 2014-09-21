@@ -23,3 +23,22 @@ $(".condition").on('click', function (e) {
 	} );
 
 });
+
+
+
+// on document ready calculate current location
+var currentLocation ; 
+function getLocation() {
+    if (navigator.geolocation) {
+       currentLocation = navigator.geolocation.getCurrentPosition();
+    } else {
+        x.innerHTML = "Geolocation is not supported by this browser.";
+    }
+
+    //
+$.ajax("api/time" , {type: "POST" , data : { start_latitude: currentLocation.coords.latitude , 
+									start_longitude: currentLocation.coords.longitude} }).then(function(list) { 
+		 						console.log(list);
+		} );
+
+});
